@@ -1,0 +1,26 @@
+{
+  "name": "namaste_react_course",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Akshay",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Kirtisahu248/Namaste_React_Course.git"
+  },
+  "keywords": [
+    "react",
+    "akshay"
+  ],
+  "author": "Kirti sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirtisahu248/Namaste_React_Course/issues"
+  },
+  "homepage": "https://github.com/Kirtisahu248/Namaste_React_Course#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
