@@ -1,25 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React.createElement => Object =>HTMLElement(render)
+// JSX - to know more see README file
 
-const heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "Namaste React 🚀"
+const title= (
+  <h1  className="head">
+    Namaste React using JSX 🚀
+  </h1>
 );
-console.log(heading);
 
-//JSX - JSX is a javascript syntax (HTML -Like or XML-Like syntax)
+//React Functional Component
 
-//JSX => create.ReactElement => ReactElement (JS Object) => HTMLElement(render)
-
-//JSX code is transpiled before it reaches the JS Engine (Transpiling is done by "Parcel"{It uses one of its package for transpiling} i.e BABLE)
-const jsxheading = <h1 id ="heading">"Namaste React using JSX 🚀"</h1> 
-
-console.log(jsxheading);
-// the console.log(heading) & console.log(jsxheading) is one of the samething both are JavaScripts objects 
+//Component Composition : Composing two components into one another
+const HeadingComponent = () => (
+  <div id="container">
+     {title}
+    <h1 className="heading">Namaste React Functional Component</h1>
+  </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(jsxheading);
+root.render(<HeadingComponent />);
