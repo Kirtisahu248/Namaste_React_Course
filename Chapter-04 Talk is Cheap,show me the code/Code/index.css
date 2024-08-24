@@ -1,0 +1,18 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    width: 150px;
+    height: 100px;
+}
+.nav-items >ul{
+    display: flex;
+    list-style-type: none;
+}
+.nav-items>ul > li{
+    padding: 2px;
+    margin: 2px;
+    
+}

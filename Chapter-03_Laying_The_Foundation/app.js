@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+
 // JSX - to know more see README file
 
 const title= (
@@ -18,7 +19,6 @@ const HeadingComponent = () => (
     <h1 className="heading">Namaste React Functional Component</h1>
   </div>
 );
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<HeadingComponent />);
+root.render(<AppLayout />);
