@@ -39,10 +39,31 @@ const Header = () => {
     </div>
   );
 };
+
+const RestaurantCard = () => {
+  return (
+    <div className="res-cards">
+      <h3>Meghana foods</h3>
+    </div>
+  );
+};
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search-box"> Search</div>
+      <div className="res-container">
+        <RestaurantCard />
+      </div>
+    </div>
+  );
+};
 const Applayout = () => {
-  return <div className="app">
-    <Header />
-    </div>;
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
