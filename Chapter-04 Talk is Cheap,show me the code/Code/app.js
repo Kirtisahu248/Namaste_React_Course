@@ -40,19 +40,20 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = ({props}) => {
+const RestaurantCard = (props) => {
+  const {resName, cusinies} = props;
   return (
     <div className="res-cards">
       <img
         className="res-logo"
         alt="res-img"
         src="https://b.zmtcdn.com/data/pictures/chains/2/18363082/ed2b2e9f365e35979823c269989813e5_o2_featured_v2.jpg"
-        />
-        <h3>Meghana foods</h3>
-        <h4>Briyani, Kebab, North Indian </h4>
-        <h4>4.0⭐</h4>
-        <h4>39 min</h4>
-        <h4>Rs 250 for one</h4>
+      />
+      <h3>{resName}</h3>
+      <h4>{cusinies}</h4>
+      <h4>4.0⭐</h4>
+      <h4>39 min</h4>
+      <h4>Rs 250 for one</h4>
     </div>
   );
 };
@@ -61,12 +62,14 @@ const Body = () => {
     <div className="body">
       <div className="search-box"> Search</div>
       <div className="res-container">
-        <RestaurantCard 
-        resName ="Meghana foods"
-        cuisines = "Briyani, Kebab, North India"/>
-        <RestaurantCard 
-           resName ="KFC"
-           cuisines = "Burger ,Frenchfries"/>
+        <RestaurantCard
+          resName="Meghana Foods"
+          cusinies="Briyani,Kebab,North Indian"
+        />
+        <RestaurantCard
+          resName="KFC"
+          cusinies="Burger, Chicken65, French Fries"
+        />
       </div>
     </div>
   );
