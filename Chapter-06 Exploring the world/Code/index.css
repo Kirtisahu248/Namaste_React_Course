@@ -162,3 +162,24 @@
     }
   }
 
+  .login{
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+
+  .filter-btn{
+    display: flex;
+    cursor: pointer;
+   
+  }
+
+  .search{
+      margin: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+  }
