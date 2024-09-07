@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [listOfRes, setlistOfRes] = useState([]);
-
-  const [allRes, setAllRes] = useState([]); // store the original list
-
+  //State Variable
+  const [listOfRes, setlistOfRes] = useState([]); //original data
+  const [filteredRestaurant , setFilteredRestaurant] = useState([]); //copy of original data
   const [searchText, setSearchText] = useState("");
 
+  //Whenever State variables update , react trigers the recoincilation cycle (re-renders the component)
   console.log("body rendered");
 
   useEffect(() => {
@@ -22,14 +22,14 @@ const Body = () => {
 
     const json = await data.json();
     //Optional chaining
-    setlistOfRes(
-      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    const resData = json.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    setlistOfRes(resData);
+    setFilteredRestaurant(resData);
   };
 
   //Conditional rendering => a rendering on the basis of condition is known as condition rendering
 
-  return !listOfRes || listOfRes.length === 0 ? (
+  return listOfRes.length === 0 ? (
     <div className="shimmer-container">{Array(15).fill(<Shimmer />)}</div>
   ) : (
     <div className="body">
@@ -45,10 +45,12 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const filteredList = allRes.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+               // -------------------------Filtering the data on serach---------------------------
+
+              const filteredRes= listOfRes.filter((restaurant) =>
+                restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setlistOfRes(filteredList);
+              setFilteredRestaurant(filteredRes);
             }}
           >
             Search
@@ -58,17 +60,17 @@ const Body = () => {
           className="filter"
           onClick={() => {
             //fliter out restaurant according to ratings
-            const filteredList = allRes.filter(
+            const filteredList = listOfRes.filter(
               (res) => res.info.avgRating > 4
             );
-            setlistOfRes(filteredList);
+            setFilteredRestaurant(filteredList);
           }}
         >
           Top Rated Restaurant
         </button>
       </div>
       <div className="res-container">
-        {listOfRes.map((restaurant) => (
+        {filteredRestaurant.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
