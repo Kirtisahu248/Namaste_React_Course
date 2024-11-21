@@ -1,37 +1,67 @@
- import React from "react";
+import React from "react";
 
 class UserClass extends React.Component {
-
-constructor(props){
+  constructor(props) {
     super(props);
-    
-    this.state ={
-        count: 0,
-    }
-    console.log("Child Constructor");
-}
-componentDidMount(){
-    console.log("Child Component Did Mount");
-}
- render (){
-     const {name,email} = this.props;
-     const {count} = this.state;
-     console.log("Child Render");
 
+    this.state = {
+      userInfo: {
+        name: "dummy",
+        location: "Bhilai",
+      },
+    };
+    // console.log(this.props.name+"Child Constructor");
+  }
+  async componentDidMount() {
+    // console.log(this.props.name+"Child Component Did Mount");
+    //api call
+    const data = await fetch("https://api.github.com/users/Kirtisahu248");
+    const json = await data.json();
+
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
+
+  componentDidUpdate() {
+    console.log('Component Did Update');
+  }
+
+  componentWillUnmount(){
+    console.log("Component will unmount");
+  }
+
+  render() {
+    const { name, login, avatar_url } = this.state.userInfo;
     return (
-        <div className="userCard">
-            <h1 className="cnt">Count:{count}</h1>
-            <button onClick={()=>{
-                this.setState({
-                    count:count + 1,
-                })
-            }}>Increment</button>
-          <h2>Name:{name}</h2>
-          <h3>Email Id:{email}</h3>
-          <h3>Contact: @kirti21</h3>
-        </div>
-      );
- }
+      <div className="userCard">
+        <img src={avatar_url}/>
+        <h2>Name:{name}</h2>
+        <h3> LoginId:{login}</h3>
+        <h3>Contact: @kirti21</h3>
+      </div>
+    );
+  }
 }
 
 export default UserClass;
+
+/**
+ * ------- MOUNTING PHASE ----------
+ * 
+ * Constructor (dummy)
+ * Render (Dummy)
+ *     <HTML Dummy> (for some milliSeconds)
+ * Component Did Mount
+ *     <API Call>
+ *     <this.setState>  --> State Variable is updated 
+ * 
+ * -------- UPDATE PHASE --------
+ * 
+ *   Render (API Call)
+ *  <HTML (new API Data)>
+ *   Component Did Update 
+ * 
+ * Life Cycle Diagram Website Reference: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+ */
